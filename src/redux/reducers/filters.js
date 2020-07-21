@@ -1,10 +1,12 @@
 const initialState = {
-  category: 0,
-  sortBy: 'popular',
+  category: null,
+  sortBy: {
+    type: 'popular',
+    order: 'desc',
+  },
 };
 
 const filters = (state = initialState, action) => {
-  console.log(action, 'reducerFilters');
   if (action.type === 'SET_SORT_BY') {
     return {
       ...state,
