@@ -1,6 +1,15 @@
 @import 'variables';
 
 .categories {
+  flex: 1;
+  max-width: 80%;
+  overflow: auto;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+
   ul {
     display: flex;
 

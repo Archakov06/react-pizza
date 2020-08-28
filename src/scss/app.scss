@@ -7,6 +7,9 @@
 body {
   background-color: $background;
   padding: 50px 0;
+  @media (max-width: 768px) {
+    padding: 20px 0;
+  }
 }
 
 .wrapper {
@@ -16,6 +19,9 @@ body {
   margin: 0 auto;
   border-radius: 10px;
   max-width: 1400px;
+  @media (max-width: 768px) {
+    width: calc(100% - 40px);
+  }
 }
 
 .content {
@@ -23,18 +29,37 @@ body {
 
   &__title {
     margin: 35px 0;
+    @media (max-width: 768px) {
+      font-size: 36px;
+    }
   }
 
   &__items {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 3vw;
+
+    @media (max-width: 1380px) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @media (max-width: 1090px) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__top {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
   }
 }
 
@@ -48,6 +73,15 @@ body {
     .content__title {
       margin: 0;
     }
+
+    @media (max-width: 768px) {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    .content__items {
+      grid-template-columns: 1fr;
+    }
   }
 }
 
@@ -56,6 +90,13 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media (max-width: 768px) {
+      flex-direction: column;
+
+      .content__title {
+        margin-bottom: 20px;
+      }
+    }
   }
 
   .content__title {
@@ -114,15 +155,31 @@ body {
     padding-top: 30px;
     margin-top: 30px;
 
+    @media (max-width: 768px) {
+      flex-direction: column;
+      position: relative;
+    }
+
     &-img {
       display: flex;
       align-items: center;
       margin-right: 15px;
       width: 10%;
 
+      @media (max-width: 768px) {
+        width: 100%;
+        justify-content: center;
+        order: 1;
+      }
+
       img {
         width: 80px;
         height: 80px;
+
+        @media (max-width: 768px) {
+          width: 60%;
+          height: 60%;
+        }
       }
     }
 
@@ -143,6 +200,25 @@ body {
         font-size: 18px;
         color: #8d8d8d;
       }
+
+      @media (max-width: 768px) {
+        width: 100%;
+        order: 2;
+        h3 {
+          font-size: 32px;
+          margin-bottom: 8px;
+          margin-top: 15px;
+        }
+        p {
+          font-size: 22px;
+        }
+      }
+    }
+
+    @media (max-width: 500px) {
+      h3 {
+        font-size: 24px;
+      }
     }
 
     &-count {
@@ -151,16 +227,36 @@ body {
       justify-content: space-between;
       width: 13%;
 
+      b {
+        font-size: 22px;
+      }
+
+      @media (max-width: 768px) {
+        order: 4;
+        width: 130px;
+        margin: 10px 0;
+
+        .button {
+          width: 40px;
+          height: 40px;
+
+          svg {
+            width: 14px;
+            height: 14px;
+          }
+        }
+
+        b {
+          font-size: 26px;
+        }
+      }
+
       &-minus {
         svg {
           path:first-of-type {
             display: none;
           }
         }
-      }
-
-      b {
-        font-size: 22px;
       }
     }
 
@@ -175,6 +271,17 @@ body {
         font-size: 22px;
         letter-spacing: 0.01em;
       }
+
+      @media (max-width: 768px) {
+        order: 3;
+        align-items: flex-start;
+        justify-content: flex-start;
+        margin: 10px 0;
+
+        b {
+          font-size: 26px;
+        }
+      }
     }
 
     &-remove {
@@ -182,6 +289,17 @@ body {
       align-items: center;
       justify-content: flex-end;
       width: 4%;
+
+      @media (max-width: 768px) {
+        position: absolute;
+        right: 0;
+        width: auto;
+
+        button {
+          width: 40px;
+          height: 40px;
+        }
+      }
 
       .button {
         border-color: darken($color: $gray-line, $amount: 10);
@@ -270,6 +388,16 @@ body {
         font-weight: 600;
         width: 210px;
         padding: 16px;
+      }
+
+      @media (max-width: 500px) {
+        flex-direction: column;
+
+        .button {
+          margin-bottom: 20px;
+          width: 100%;
+          height: 54px;
+        }
       }
     }
   }
