@@ -8,7 +8,7 @@ function PizzaBlock({ id, name, imageUrl, price, types, sizes, onClickAddPizza, 
   const availableSizes = [26, 30, 40];
 
   const [activeType, setActiveType] = React.useState(types[0]);
-  const [activeSize, setActiveSize] = React.useState(0);
+  const [activeSize, setActiveSize] = React.useState(sizes[0]);
 
   const onSelectType = (index) => {
     setActiveType(index);
@@ -51,10 +51,10 @@ function PizzaBlock({ id, name, imageUrl, price, types, sizes, onClickAddPizza, 
         <ul>
           {availableSizes.map((size, index) => (
             <li
-              key={size}
-              onClick={() => onSelectSize(index)}
+              key={index}
+              onClick={() => onSelectSize(size)}
               className={classNames({
-                active: activeSize === index,
+                active: activeSize === size,
                 disabled: !sizes.includes(size),
               })}>
               {size} см.
