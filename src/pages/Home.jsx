@@ -9,7 +9,7 @@ import { addPizzaToCart } from '../redux/actions/cart';
 
 const categoryNames = ['Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
 const sortIems = [
-  { name: 'популярности', type: 'popular', order: 'desc' },
+  { name: 'популярности', type: 'rating', order: 'asc' },
   { name: 'цене', type: 'price', order: 'desc' },
   { name: 'алфавит', type: 'name', order: 'asc' },
 ];
@@ -58,16 +58,16 @@ function Home() {
       <div className="content__items">
         {isLoaded
           ? items.map((obj) => (
-              <PizzaBlock
-                onClickAddPizza={handleAddPizzaToCart}
-                key={obj.id}
-                addedCount={cartItems[obj.id] && cartItems[obj.id].items.length}
-                {...obj}
-              />
-            ))
+            <PizzaBlock
+              onClickAddPizza={handleAddPizzaToCart}
+              key={obj.id}
+              addedCount={cartItems[obj.id] && cartItems[obj.id].items.length}
+              {...obj}
+            />
+          ))
           : Array(12)
-              .fill(0)
-              .map((_, index) => <PizzaLoadingBlock key={index} />)}
+            .fill(0)
+            .map((_, index) => <PizzaLoadingBlock key={index} />)}
       </div>
     </div>
   );
